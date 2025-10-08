@@ -3,19 +3,29 @@ using namespace std;
 
 int main() {
     setlocale(LC_ALL, "Russian");
-    double grams;
-    const double ounceWeight = 28.3495;   
-    const double pricePerOunce = 3843.03; 
+    double grams, kg, pricePerOunce, ounces, totalPrice, usd, som;
+    const double ounceWeight = 31.1034768;
+    
+    cout << "Введите вес золота (кг): ";
+    cin >> kg;
 
-    cout << "Введите вес золота (г): ";
-    cin >> grams;
+    cout << "Введите цену золота за унцию в Лондонском биржевом курсе, (USD): ";
+    cin >> pricePerOunce;
 
-    double ounces = grams / ounceWeight;
+    cout << "Введите курс доллара: ";
+    cin >> usd;
 
-    double totalPrice = ounces * pricePerOunce;
+	grams = kg * 1000;
+
+    ounces = grams / ounceWeight;
+
+    totalPrice = ounces * pricePerOunce;
+
+    som = totalPrice * usd;
 
     cout << "\nВес золота в унциях: " << ounces << " унций" << endl;
-    cout << "Стоимость золота: " << totalPrice << " USD" << endl;
+    cout << "Стоимость золота по Лондонскому биржевому курсу: " << totalPrice << endl;
+    cout << "Стоимость золота в Сомах: " << som << endl;
 
     system("pause");
     return 0;
