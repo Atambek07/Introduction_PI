@@ -13,14 +13,14 @@ int main() {
     int arr[N] = {};
     int maxVal, minVal, maxIndex, minIndex, temp;
 
+    cout << "Исходный массив: " << endl; 
     for (int i = 0; i < N; i++) {
         arr[i] = rand() % 41 - 20;
+        cout << "Arr[" << i << "] = " << arr[i] << "\t";
+        if ((i + 1) % 5 == 0)
+            cout << endl;
     }
 
-	cout << "Исходный массив: ";
-    for (int i = 0; i < N; i++) {
-        cout << arr[i] << " ";
-	}
 	cout << endl;
 
     for (int i = 0; i < N; i++) {
@@ -29,6 +29,14 @@ int main() {
         else
             arr[i] *= 2;
     }
+
+    cout << "Массив после переоброзование: " << endl;
+    for (int i = 0; i < N; i++) {
+        cout << "Arr[" << i << "] = " << arr[i] << "\t";
+        if ((i + 1) % 5 == 0)
+            cout << endl;
+    }
+    cout << endl;
 
     maxVal = arr[0];
     minVal = arr[0];
@@ -40,7 +48,7 @@ int main() {
             maxVal = arr[i];
             maxIndex = i;
         }
-        if (arr[i] < minVal) {
+        else if (arr[i] < minVal) {
             minVal = arr[i];
             minIndex = i;
         }
@@ -50,14 +58,17 @@ int main() {
     arr[maxIndex] = arr[minIndex];
     arr[minIndex] = temp;
 
-    cout << "Результат: ";
-    for (int i = 0; i < N; i++) {
-        cout << arr[i] << " ";
-    }
+    cout << "Индекс и значение максимального элемента: " << maxIndex << ", " << arr[maxIndex] << endl;
+    cout << "Индекс и значени минимального элемента: " << minIndex << ", " << arr[minIndex] << endl;
     cout << endl;
 
-    cout << "Индекс максимального элемента: " << maxIndex << endl;
-    cout << "Индекс минимального элемента: " << minIndex << endl;
+    cout << "Результат: " << endl;
+    for (int i = 0; i < N; i++) {
+        cout << "Arr[" << i << "] = " << arr[i] << "\t";
+        if ((i + 1) % 5 == 0)
+            cout << endl;
+    }
+    cout << endl;
 
     system("pause");
     return 0;
