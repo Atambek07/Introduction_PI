@@ -12,9 +12,14 @@ int main() {
     const int N = 25;
     int x[N] = {}, minBN, firstNeg = -1;
 
+    cout << "Массив х: " << endl;
     for (int i = 0; i < N; i++) {
-        x[i] = rand() % 51 - 25;
+        x[i] = rand() % 10 - 2;
+        cout << "x[" << i << "] = " << x[i] << "\t";
+        if ((i + 1) % 5 == 0)
+            cout << endl;
     }
+    cout << endl;
 
     for (int i = 0; i < N; i++) {
         if (x[i] < 0) {
@@ -22,6 +27,8 @@ int main() {
             break;
         }
     }
+
+    cout << "Индекс первого отрицательного элемента\t" << firstNeg << endl;
 
     if (firstNeg > 0) {
 		cout << "Первый отрицательный элемент: " << x[firstNeg] << " на позиции " << firstNeg << endl;
@@ -43,10 +50,14 @@ int main() {
         cout << "Отрицательных элементов нет." << endl;
     }
 
-    cout << "Результат: ";
-    for (int i = 0; i < N; i++) cout << x[i] << " ";
+    cout << "\nРезультат: \n";
+    for (int i = 0; i < N; i++) {
+        cout << "x[" << i << "] = " << x[i] << "\t";
+        if ((i + 1) % 5 == 0)
+            cout << endl;
+    }
     cout << endl;
 
     system("pause");
     return 0;
-}
+    }
