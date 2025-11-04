@@ -10,39 +10,35 @@ int main() {
     srand(time(NULL)); 
 
 	int sp, pn;
-	bool neg;
-    const int N = 10;
+    const int N = 20;
 
-    int arr[N] = {}; 
+    int arr[N] = {};        
 
-    cout << "Массив: ";
+    cout << "Массив: " << endl;
     for (int i = 0; i < N; i++) {
         arr[i] = rand() % 21 - 10;
-        cout << arr[i] << " ";
+        cout << "Arr[" << i << "] = " << arr[i] << "\t";
+        if ((i + 1) % 5 == 0)
+            cout << endl;
     }
 
     cout << endl;
 
     sp = 0;    
     pn = 1;    
-    neg = false; 
 
     for (int i = 0; i < N; i++) {
         if (arr[i] > 0 && arr[i] % 2 == 0) {
             sp += arr[i];
         }
-        if (arr[i] < 0 && arr[i] % 2 != 0) {
+        else if (arr[i] < 0 && arr[i] % 2 != 0) {
             pn *= arr[i];
-            neg = true;
         }
     }
 
     cout << "Сумма четных положительных элементов: " << sp << endl;
 
-    if (neg != false)
-        cout << "Произведение нечетных отрицательных элементов: " << pn << endl;
-    else
-        cout << "В массиве нет нечетных отрицательных элементов." << endl;
+    cout << "Произведение нечетных отрицательных элементов: " << pn << endl;
 
 	system("pause");
     return 0;
