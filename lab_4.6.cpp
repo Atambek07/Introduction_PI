@@ -1,4 +1,4 @@
-//Задание 7
+// Задача 6
 
 #include <iostream>
 #include <cstdlib>
@@ -9,55 +9,52 @@ int main() {
     setlocale(LC_ALL, "RU");
     srand(time(NULL));
 
-    const int N = 25;
-    int x[N] = {}, minBN, firstNeg = -1;
+    const int N = 26;
+    int a[N] = {}, firstZero, sum, p, rmax, rmin;
+    firstZero = -1, sum = 0, p = 1;
 
-    cout << "Массив х: " << endl;
+    cout << "Массив a: " << endl;
     for (int i = 0; i < N; i++) {
-        x[i] = rand() % 10 - 2;
-        cout << "x[" << i << "] = " << x[i] << "\t";
+        a[i] = rand() % 21 - 10;
+        cout << "a[" << i << "] = " << a[i] << "\t";
         if ((i + 1) % 5 == 0)
             cout << endl;
     }
     cout << endl;
 
     for (int i = 0; i < N; i++) {
-        if (x[i] < 0) {
-            firstNeg = i;
+        if (a[i] == 0) {
+            firstZero = i;
             break;
         }
+        sum += a[i];
+        p *= a[i];
     }
 
-    cout << "Индекс первого отрицательного элемента\t" << firstNeg << endl;
-
-    if (firstNeg > 0) {
-		cout << "Первый отрицательный элемент: " << x[firstNeg] << " на позиции " << firstNeg << endl;
-        minBN = x[0];
-        for (int i = 1; i < firstNeg; i++) {
-            if (x[i] < minBN) minBN = x[i];
+    if (firstZero != -1 && firstZero < N - 1) {
+        rmax = a[firstZero + 1];
+        rmin = a[firstZero + 1];
+        for (int i = firstZero + 1; i < N; i++) {
+            if (a[i] > rmax) rmax = a[i];
+            if (a[i] < rmin) rmin = a[i];
         }
-
-        for (int i = firstNeg + 1; i < N; i++) {
-            if (x[i] < 0) x[i] *= minBN;
-        }
-
-        cout << "Наименьший элемент до первого отрицательного: " << minBN << endl;
     }
-    else if (firstNeg == 0) {
-        cout << "Первый элемент отрицательный, до него нет элементов." << endl;
+
+    if (firstZero != -1) {
+        cout << "Номер первого нулевого элемента: " << firstZero << endl;
+        cout << "Сумма элементов до нуля: " << sum << endl;
+        cout << "Произведение элементов до нуля: " << p << endl;
+        if (firstZero < N - 1) {
+            cout << "Максимальный элемент после нуля: " << rmax << endl;
+            cout << "Минимальный элемент после нуля: " << rmin << endl;
+        }
     }
     else {
-        cout << "Отрицательных элементов нет." << endl;
+        cout << "В массиве нет нулевых элементов." << endl;
+        cout << "Сумма всех элементов: " << sum << endl;
+        cout << "Произведение всех элементов: " << p << endl;
     }
-
-    cout << "\nРезультат: \n";
-    for (int i = 0; i < N; i++) {
-        cout << "x[" << i << "] = " << x[i] << "\t";
-        if ((i + 1) % 5 == 0)
-            cout << endl;
-    }
-    cout << endl;
 
     system("pause");
     return 0;
-    }
+}
